@@ -26,7 +26,13 @@
 	<div class="content">
 		<section id="home">
 			<div class="left">
-				<h1>It's Amazing</h1>
+				<div style="text-align: right">
+					<h1>Audio Book Player</h1>
+					<h2>The best audio book player and manager out there</h2>
+					<div style="display: inline-flex;">
+						<a class="button" style="margin: 0;" href="#downloads">Download</a>
+					</div>
+				</div>
 			</div>
 			<div class="right">
 				<img src="assets/images/preview.png">
@@ -37,14 +43,65 @@
 			<h1>Features</h1>
 		</section>
 		<section id="downloads">
-			<h1>Downloads</h1>
+			<h1 style="grid-area: title">Downloads</h1>
+			<div style="grid-area: android">
+				<h2>Android</h2>
+				Coming Soon
+			</div>
+			<div style="grid-area: windows">
+				<h2>Windows</h2>
+			</div>
+			<div style="grid-area: linux">
+				<h2>Linux</h2>
+			</div>
+			<div style="grid-area: mac">
+				<h2>OSX</h2>
+				Coming Soon
+			</div>
+			<div style="grid-area: ios">
+				<h2>IOS</h2>
+				Coming Soon
+			</div>
 		</section>
 		<section id="support">
 			<h1>Support</h1>
 		</section>
+		<footer>
+			<div>test</div>
+			<div>test</div>
+			<div>test</div>
+			<div>test</div>
+		</footer>
 	</div>
-	<footer>
-		<h1>Footer</h1>
-	</footer>
+	<script src="assets/js/aws-sdk-2.389.0.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/3.12.1/js-yaml.min.js"></script>
+	<script type="text/javascript">
+		const contentDiv = document.getElementsByClassName('content')[0];
+		const scrollOffset = document.getElementsByTagName('nav')[0].getBoundingClientRect().height;
+		const s3 = new AWS.S3({
+			params: { Bucket:'audiobookplayer'}
+		});
+		document.querySelectorAll('a[href*="#"]').forEach(element => {
+			element.addEventListener('click', event => {
+					event.preventDefault();
+					const link = event.target.href;
+					const target = link.slice(link.lastIndexOf('#')+1);
+					const tElement = document.getElementById(target);
+					contentDiv.scroll({
+					  top: (tElement.getBoundingClientRect().top + contentDiv.scrollTop) - scrollOffset,
+					  //behavior: 'smooth'
+					});
+				}
+			);
+		});
+		s3.getObject({Key:'builds/win/latest.yml'}, console.log);
+		fetch('https://s3.eu-west-1.amazonaws.com/audiobookplayer/builds/win/latest.yml')
+		.then(r => r.text())
+		.then(console.log);
+		// fetch('https://s3.eu-west-1.amazonaws.com/audiobookplayer/builds/linux/latest-linux.yml')
+		// fetch('https://s3.eu-west-1.amazonaws.com/audiobookplayer/builds/mac/latest-mac.yml')
+
+
+	</script>
 </body>
 </html>

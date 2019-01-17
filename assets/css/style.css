@@ -9,12 +9,19 @@ html {
   background: radial-gradient(circle at 0% 0%, #373b52, #252736 51%, #1d1e26);
   height: 100vh;
   color: rgba(202, 205, 239, 0.8);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+
 }
 
 body {
   margin: 0;
   height: 100vh;
   overflow: hidden;
+  display: grid;
+  grid-gap: .3em
 }
 
 a {
@@ -26,6 +33,12 @@ h1, h2, h3, h4, h5, h6 {
   color: #f5f6ff;
   line-height:1em;
   margin: .5em 0;
+  /*text-shadow: rgba(0,0,0,.01) 0 0 1px;*/
+  text-align: center;
+}
+
+h1 {
+  font-size: 4em;
 }
 
 .logo img {
@@ -54,33 +67,88 @@ nav ul li{
   padding: 1em;
 }
 
-a.button {
-  padding: 1em;
-}
-
 .content {
-  height: 100vh;
   overflow-y: scroll;
 }
 
 section {
   margin: 1em 1em 1em;
-  height: 100vh;
+  height: 91vh;
+  display: grid;
+}
+
+section#home {
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1em;
 }
 
 section#home .left,
 section#home .right {
-  display: inline-block;
-  width: 49.8%;
+  display: inline-flex;
+  align-items: center;
+}
+
+section#home .left {
+  justify-content: flex-end;
+}
+section#home .right {
+ justify-content: flex-start; 
+}
+
+section#home .right img {
+  -webkit-mask: linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0));
+  height: 40em;
+}
+
+section#downloads {
+  grid-template-areas: "title title title title title"
+                      "android windows linux mac ios";
+  grid-template-rows: .1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 1em;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  margin: 1em;
+}
+
+.button {
+  padding: 1em;
+  margin: 1em;
+  background: rgba(57, 63, 84, 0.8);
 }
 
 /*a.button::before {
-  content: ' ';
-
-  padding: 1em;
+  border-radius: 4px !important;
   background-image: linear-gradient(to right, #B294FF, #57E6E6, #FEFFB8, #57E6E6, #B294FF, #57E6E6);
   background-size: 500% auto;
   animation: gradient 3s linear infinite;
+}
+
+@keyframes gradient {
+  to {
+     background-position: right;
+  }
+}
+
+a.button::before,
+a.button::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: auto;
+  width: auto;
+  z-index: -1;
+  border-radius: 3px;
+}
+
+a.button::after {
+  margin: 3px;
 }*/
 
 ::-webkit-scrollbar {
