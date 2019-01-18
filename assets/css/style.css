@@ -95,6 +95,17 @@ section#home .right {
 section#home .left {
   justify-content: flex-end;
 }
+
+section#home .left .downloadButton {
+  display: flex;
+  justify-content: center;
+}
+
+section#home .left .downloadButton .button {
+  padding: 1em 7em;
+  font-size: 1.4em;
+}
+
 section#home .right {
  justify-content: flex-start; 
 }
