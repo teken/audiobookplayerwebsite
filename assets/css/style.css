@@ -115,6 +115,22 @@ section#home .right img {
   height: 40em;
 }
 
+section#features .features{
+  display: flex;
+  justify-content: center;
+  text-align:center;
+}
+
+section#features .feature{
+  font-size: 2em;
+  padding: .25em;
+}
+
+section#features .details{
+  font-size: .75em;
+  color: #7881A1;
+}
+
 section#downloads {
   display: grid;
   grid-template-areas: "title title title title title"
