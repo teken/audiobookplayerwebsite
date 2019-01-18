@@ -33,8 +33,11 @@ h1, h2, h3, h4, h5, h6 {
   color: #f5f6ff;
   line-height:1em;
   margin: .5em 0;
-  /*text-shadow: rgba(0,0,0,.01) 0 0 1px;*/
   text-align: center;
+}
+
+h3, h4, h5, h6 {
+  color: rgba(202, 205, 239, 0.8);
 }
 
 h1 {
@@ -73,13 +76,14 @@ nav ul li{
 
 section {
   margin: 1em 1em 1em;
-  height: 91vh;
-  display: grid;
+  min-height: 50vh;
 }
 
 section#home {
+  display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 1em;
+  height: 91vh;
 }
 
 section#home .left,
@@ -101,11 +105,43 @@ section#home .right img {
 }
 
 section#downloads {
+  display: grid;
   grid-template-areas: "title title title title title"
                       "android windows linux mac ios";
   grid-template-rows: .1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 1em;
+}
+
+section#support .places{
+  display: flex;
+  justify-content: center
+}
+
+section#support .places a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+section#support img{
+  border-radius: 50%;
+  width: 10em;
+}
+
+section#faq .questions{
+  display: flex;
+  justify-content: center;
+  text-align:center;
+}
+
+section#faq .question{
+  font-size: 2em;
+}
+
+section#faq .awsner{
+  font-size: .75em;
+  color: #7881A1;
 }
 
 footer {
@@ -118,6 +154,18 @@ footer {
   padding: 1em;
   margin: 1em;
   background: rgba(57, 63, 84, 0.8);
+}
+
+textarea {
+  width: 100%;
+  border-color: transparent;
+  color: #BFD2FF;
+  background-color: rgba(57, 63, 84, 0.8);
+}
+
+a.file,
+span.date {
+  color: #BFD2FF;
 }
 
 /*a.button::before {

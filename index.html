@@ -7,6 +7,8 @@
 	<title>Audio Book Player</title>
 	<meta name="description" content="A media player designed speficially for all your audio book needs">
 	<link rel="stylesheet" href="assets/css/style.css"/>
+	<link rel="shortcut icon" href="assets/images/icon.ico" type="image/x-icon">
+	<link rel="icon" href="assets/images/icon.ico" type="image/x-icon">
 </head>
 <body>
 	<nav>
@@ -16,10 +18,11 @@
 			</a>
 		</div>
 		<ul>
-			<li><a href="#home">Home</a></li>
+			<li><a v-on:click="scrollTo" href="#home">Home</a></li>
 			<li><a href="#features">Features</a></li>
-			<li><a href="#support">Support Us</a></li>
 			<li><a href="#downloads">Downloads</a></li>
+			<li><a href="#support">Support this Project</a></li>
+			<li><a href="#faq">FAQ</a></li>
 		</ul>
 		<!-- <a class="button" href="#downloads">Download</a> -->
 	</nav>
@@ -44,27 +47,71 @@
 		</section>
 		<section id="downloads">
 			<h1 style="grid-area: title">Downloads</h1>
-			<div style="grid-area: android">
+			<!-- <div id="android" style="grid-area: android">
 				<h2>Android</h2>
 				Coming Soon
-			</div>
-			<div style="grid-area: windows">
+			</div> -->
+			<div id="win" style="grid-area: windows">
 				<h2>Windows</h2>
+				<h3>Latest: <span class="version"></span></h3>
+				<p>
+					Release Date: <span class="date"></span>
+				<p>
+					Download Link: <a class="file" href="javascript:void()"></a>
+				<p>
+					SHA512:<br/><textarea class="sha512"></textarea>
+
+				<h3>Older Versions</h3>
 			</div>
-			<div style="grid-area: linux">
+			<div id="linux" style="grid-area: linux">
 				<h2>Linux</h2>
+				<h3>Latest: <span class="version"></span></h3>
+				<p>
+					Release Date: <span class="date"></span>
+				<p>
+					Download Link: <a class="file" href="javascript:void()"></a>
+				<p>
+					SHA512:<br/><textarea class="sha512"></textarea>
+
+				<h3>Older Versions</h3>
 			</div>
-			<div style="grid-area: mac">
+			<div id="mac" style="grid-area: mac">
 				<h2>OSX</h2>
-				Coming Soon
+				<h3>Latest: <span class="version"></span></h3>
+				<p>
+					Release Date: <span class="date"></span>
+				<p>
+					Download Link: <a class="file" href="javascript:void()"></a>
+				<p>
+					SHA512:<br/><textarea class="sha512"></textarea>
+
+				<h3>Older Versions</h3>
 			</div>
-			<div style="grid-area: ios">
+			<!-- <div id="ios" style="grid-area: ios">
 				<h2>IOS</h2>
 				Coming Soon
-			</div>
+			</div> -->
 		</section>
 		<section id="support">
-			<h1>Support</h1>
+			<h1>Support Us On</h1>
+			<div class="places">
+				<a href="https://www.patreon.com/AudioBookPlayer">
+					<img src="assets/images/Patreon_Mark_Coral.jpg"><br/>
+					Patron - Audio Book Player
+				</a>
+			</p>
+		</section>
+		<section id="faq">
+			<h1>FAQ</h1>
+			<div class="questions">
+				<div class="question">
+					Test
+					<div class="awsner">
+						Test
+					</div>
+				</div>
+
+			</div>
 		</section>
 		<footer>
 			<div>test</div>
@@ -73,35 +120,12 @@
 			<div>test</div>
 		</footer>
 	</div>
+	<script
+	  src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+	  integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+	  crossorigin="anonymous"></script>
 	<script src="assets/js/aws-sdk-2.389.0.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/3.12.1/js-yaml.min.js"></script>
-	<script type="text/javascript">
-		const contentDiv = document.getElementsByClassName('content')[0];
-		const scrollOffset = document.getElementsByTagName('nav')[0].getBoundingClientRect().height;
-		const s3 = new AWS.S3({
-			params: { Bucket:'audiobookplayer'}
-		});
-		document.querySelectorAll('a[href*="#"]').forEach(element => {
-			element.addEventListener('click', event => {
-					event.preventDefault();
-					const link = event.target.href;
-					const target = link.slice(link.lastIndexOf('#')+1);
-					const tElement = document.getElementById(target);
-					contentDiv.scroll({
-					  top: (tElement.getBoundingClientRect().top + contentDiv.scrollTop) - scrollOffset,
-					  //behavior: 'smooth'
-					});
-				}
-			);
-		});
-		s3.getObject({Key:'builds/win/latest.yml'}, console.log);
-		fetch('https://s3.eu-west-1.amazonaws.com/audiobookplayer/builds/win/latest.yml')
-		.then(r => r.text())
-		.then(console.log);
-		// fetch('https://s3.eu-west-1.amazonaws.com/audiobookplayer/builds/linux/latest-linux.yml')
-		// fetch('https://s3.eu-west-1.amazonaws.com/audiobookplayer/builds/mac/latest-mac.yml')
-
-
-	</script>
+	<script src="assets/js/app.js"></script>
 </body>
 </html>
