@@ -3,18 +3,29 @@ const scrollOffset = $('nav').height();
 const win = $('#win');
 const linux = $('#linux');
 const mac = $('#mac');
+const dlframe = $('#dlframe');
+const downloads = {};
+
 $('a[href*="#"]').on('click', event => {
 	event.preventDefault();
 	const link = event.target.href;
 	const target = link.slice(link.lastIndexOf('#')+1);
-	const tElement = $(`#${target}`);
-	if (tElement)
+	scrollTo(target)
+});
+
+function downloadPlatform(platform) {
+	dlframe.attr('src', downloads[platform]);
+}
+
+function scrollTo(name) {
+	const element = $(`#${name}`);
+	if (element)
 		contentDiv[0].scroll({
-		  top: (tElement.offset().top + contentDiv.scrollTop()) - scrollOffset,
+		  top: (element.offset().top + contentDiv.scrollTop()) - scrollOffset,
 		  //behavior: 'smooth'
 		});
 	else return;
-});
+}
 
 function getYML(url) {
 	return fetch(url).then(x => x.text()).then(jsyaml.load)
@@ -36,9 +47,21 @@ function populateDownloadSection(data, source, platform) {
 	source.find('.date').text(new Date(data.releaseDate).toDateString());
 	source.find('.sha512').val(data.sha512);
 	const url = encodeURI(`https://s3.eu-west-1.amazonaws.com/audiobookplayer/builds/${platform}/${data.path}`);
+	downloads[platform] = url;
 	const link = source.find('.file');
 	link.text(data.path);
 	link.attr('href', url);
 }
+
+$('.downloadButton a').on('click', () => {
+	let platform = '';
+
+	if (navigator.platform.startsWith('Win'))platform = 'win';
+	if (navigator.platform.startsWith('Linux'))platform = 'linux';
+	if (navigator.platform.startsWith('Mac'))platform = 'mac';
+
+	if (platform) downloadPlatform(platform);
+	else scrollTo('downloads');
+});
 
 init();
