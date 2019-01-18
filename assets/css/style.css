@@ -161,12 +161,6 @@ footer {
   margin: 1em;
 }
 
-.button {
-  padding: 1em;
-  margin: 1em;
-  background: rgba(57, 63, 84, 0.8);
-}
-
 textarea {
   width: 100%;
   border-color: transparent;
@@ -179,7 +173,16 @@ span.date {
   color: #BFD2FF;
 }
 
-/*a.button::before {
+.button {
+  padding: 1em;
+  margin: 1em;
+  position: relative;
+  color: rgba(57, 63, 84, 1);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+a.button::before {
   border-radius: 4px !important;
   background-image: linear-gradient(to right, #B294FF, #57E6E6, #FEFFB8, #57E6E6, #B294FF, #57E6E6);
   background-size: 500% auto;
@@ -208,7 +211,7 @@ a.button::after {
 
 a.button::after {
   margin: 3px;
-}*/
+}
 
 ::-webkit-scrollbar {
   width: 8px;
