@@ -140,6 +140,10 @@ section#downloads {
   grid-gap: 1em;
 }
 
+section#downloads textarea{
+  resize: none;
+}
+
 section#support .places{
   display: flex;
   justify-content: center
