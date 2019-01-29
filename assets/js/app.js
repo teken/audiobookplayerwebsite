@@ -6,8 +6,13 @@ const mac = $('#mac');
 const dlframe = $('#dlframe');
 const downloads = {};
 
+$('.hamburg').on('click', event => {
+	$('nav ul').toggleClass('show')
+});
+
 $('a[href*="#"]').on('click', event => {
 	event.preventDefault();
+	$(event.target).parent('nav ul').removeClass('show');
 	const link = event.target.href;
 	const target = link.slice(link.lastIndexOf('#')+1);
 	scrollTo(target)

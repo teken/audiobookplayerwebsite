@@ -21,7 +21,7 @@ body {
   height: 100vh;
   overflow: hidden;
   display: grid;
-  grid-gap: .3em transparent
+  grid-gap: .3em;
 }
 
 a {
@@ -75,23 +75,46 @@ nav ul li{
     display: none;
   }
 
-/*@media screen and (orientation:portrait) {
+@media screen and (orientation:portrait) {
   .hamburg {
     display: block;
   }
 
+  nav {
+    height: 3em;
+    padding-left: 1em;
+  }
+
+  nav ul.show {
+    display: flex;
+  }
+
   nav ul {
     margin: 0;
-    display: flex;
+    display: none;
     list-style: none;
     flex-direction: column;
     position: absolute;
     left: 0;
-    top: 37px;
-    width: 100vw;
+    top: 3.1em;
+    width: calc(100vw - 1em);
     border-bottom: .1em solid #7881A1;
+    z-index: 1;
+    background: radial-gradient(circle at 0% 0%, #373b52, #252736 51%, #1d1e26);
   }
-}*/
+
+  nav ul li::before {
+    content: ' ';
+    border-bottom: .2em solid #7881A1;
+    border-right: .2em solid #7881A1;
+    height: .5em;
+    width: .5em;
+    position: absolute;
+    transform: rotateZ(-45deg);
+    margin-left: -2em;
+    margin-top: 0.2em;
+  }
+}
 
 .content {
   overflow-y: scroll;
@@ -132,9 +155,13 @@ section#home .left .downloadButton .button {
 }
 
 @media screen and (orientation:portrait) {
+  section#home{
+    grid-template-columns: 1fr;
+  }
+
   section#home .right {
-   display: none;
-  }  
+    display: none;
+  }
 }
 
 section#home .right {
@@ -192,6 +219,18 @@ section#features .feature .details{
   padding-bottom: 1em;
 }
 
+@media screen and (orientation:portrait) {
+  section#features .feature{
+    grid-template-areas: "details details" !important;
+    text-align: center !important;
+  }
+
+  section#features .feature .details {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+}
+
 section#downloads {
   display: grid;
   grid-template-areas: "title title title title title"
@@ -199,6 +238,20 @@ section#downloads {
   grid-template-rows: .1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 1em;
+}
+
+@media screen and (orientation:portrait) {
+  section#downloads {
+    grid-template-areas: "title"
+                        /*"android"*/
+                        "windows"
+                        "linux"
+                        "mac"
+                        /*"ios";*/
+                        ;
+    grid-template-rows: .1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
+  }
 }
 
 section#downloads textarea{
