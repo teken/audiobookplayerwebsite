@@ -188,7 +188,7 @@ section#features .feature .title{
 
 section#features .feature .details{
   grid-area: details;
-  color: #7881A1;
+  color: rgba(202, 205, 239, 0.8);
   padding-bottom: 1em;
 }
 
