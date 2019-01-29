@@ -159,6 +159,10 @@ section#home .left .downloadButton .button {
     grid-template-columns: 1fr;
   }
 
+  section#home .left {
+    justify-content: center; 
+  }
+
   section#home .right {
     display: none;
   }
