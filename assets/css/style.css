@@ -21,7 +21,7 @@ body {
   height: 100vh;
   overflow: hidden;
   display: grid;
-  grid-gap: .3em
+  grid-gap: .3em transparent
 }
 
 a {
@@ -58,6 +58,7 @@ nav {
   border-bottom: .1em solid #7881A1;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 nav ul {
@@ -70,8 +71,32 @@ nav ul li{
   padding: 1em;
 }
 
+.hamburg {
+    display: none;
+  }
+
+/*@media screen and (orientation:portrait) {
+  .hamburg {
+    display: block;
+  }
+
+  nav ul {
+    margin: 0;
+    display: flex;
+    list-style: none;
+    flex-direction: column;
+    position: absolute;
+    left: 0;
+    top: 37px;
+    width: 100vw;
+    border-bottom: .1em solid #7881A1;
+  }
+}*/
+
 .content {
   overflow-y: scroll;
+  overflow-x: hidden;
+  width: 100vw;
 }
 
 section {
@@ -106,6 +131,12 @@ section#home .left .downloadButton .button {
   font-size: 1.4em;
 }
 
+@media screen and (orientation:portrait) {
+  section#home .right {
+   display: none;
+  }  
+}
+
 section#home .right {
  justify-content: flex-start; 
 }
@@ -119,16 +150,46 @@ section#features .features{
   display: flex;
   justify-content: center;
   text-align:center;
+  flex-direction: column;
 }
 
-section#features .feature{
-  font-size: 2em;
-  padding: .25em;
+section#features .feature {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
-section#features .details{
-  font-size: .75em;
+section#features .feature:nth-child(odd) {
+  grid-template-areas: "image details";
+  text-align: left;
+}
+
+section#features .feature:nth-child(odd) .details {
+  padding-right: 50%;
+}
+
+section#features .feature:nth-child(even) {
+  grid-template-areas: "details image";
+  text-align: right;
+}
+
+section#features .feature:nth-child(even) .details {
+  padding-left: 50%;
+}
+
+section#features .feature .image{
+  grid-area: details;
+}
+
+section#features .feature .title{
+  font-size: 1.35em;
+  color: #f5f6ff;
+  padding-bottom: .5em;
+}
+
+section#features .feature .details{
+  grid-area: details;
   color: #7881A1;
+  padding-bottom: 1em;
 }
 
 section#downloads {
@@ -200,6 +261,7 @@ span.date {
   color: rgba(57, 63, 84, 1);
   font-weight: 700;
   text-transform: uppercase;
+  text-align: center;
 }
 
 a.button::before {

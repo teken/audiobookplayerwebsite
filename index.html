@@ -12,13 +12,16 @@
 </head>
 <body>
 	<nav>
+		<!-- <div class="hamburg">
+			<?xml version="1.0" ?><svg height="32px" style="enable-background:new 0 0 32 32;" version="1.1" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z" fill="#f5f6ff"/></svg>
+		</div> -->
 		<div class="logo">
 			<a href="/">
 				<img src="assets/images/icon.svg" alt="Audio Book Player">
 			</a>
 		</div>
 		<ul>
-			<li><a v-on:click="scrollTo" href="#home">Home</a></li>
+			<li><a href="#home">Home</a></li>
 			<li><a href="#features">Features</a></li>
 			<li><a href="#downloads">Downloads</a></li>
 			<li><a href="#support">Support this Project</a></li>
@@ -46,15 +49,30 @@
 			<h1>Features</h1>
 			<div class="features">
 				<div class="feature">
-					Library Functionality
+					<div class="image">
+						<img src="" />
+					</div>
 					<div class="details">
-						Test
+						<div class="title">Time Stamp Saving</div>
+						Never lose your place again, your times are saved forever!
 					</div>
 				</div>
 				<div class="feature">
-					Book Progess Saved
+					<div class="image">
+						<img src="" />
+					</div>
 					<div class="details">
-						Test
+						<div class="title">Chapter Intergration</div>
+						Automaticly parses CUE and playlist files so it can understand where the true splits in your audiobook are!
+					</div>
+				</div>
+				<div class="feature">
+					<div class="image">
+						<img src="" />
+					</div>
+					<div class="details">
+						<div class="title">Platform Agnostic</div>
+						Windows, Mac or Linux, doesn't matter, it'll run!
 					</div>
 				</div>
 			</div>
@@ -127,7 +145,6 @@
 	  src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 	  integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
 	  crossorigin="anonymous"></script>
-	<script src="assets/js/aws-sdk-2.389.0.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/3.12.1/js-yaml.min.js"></script>
 	<script src="assets/js/app.js"></script>
 </body>
